@@ -1,0 +1,44 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<title>Worker thread</title>
+		<script src="http://s0.qhimg.com/lib/qwrap/115.js"></script>
+	</head>
+	<body>
+		<h1>Thread testing</h1>
+		<ul>
+		</ul>
+	</body>
+	<script src="WorkerThread.js"></script>
+	<script type="text/javascript">
+		var t1 = new WorkerThread({i: 100} /*shared obj*/);
+
+		setInterval(function(){
+			t1.run(function(sharedObj){
+					return sharedObj.i++;
+				},
+				function(r){
+					console.log("t1>" + r.returnValue + ":" + r.error);
+				}
+			);
+		}, 500);
+
+		var t2 = new WorkerThread({i: 50});
+		
+		t2.run(function(sharedObj){	
+			while(this.threadSignal){
+				sharedObj.i++;
+
+				this.runOnUiThread(function(sharedObj){
+					W("body ul").appendChild("<li>"+sharedObj.i+"</li>");
+				});
+				
+				this.sleep(500);
+			}
+			return sharedObj.i;
+		}, function(r){
+			console.log("t2>" + r.returnValue + ":" + r.error);
+		});
+	</script>
+</html>

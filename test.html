@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<title>Worker thread</title>
+		<script src="http://s0.qhimg.com/lib/qwrap/115.js"></script>
+	</head>
+	<body>
+		<h1>Thread testing</h1>
+		<ul>
+		</ul>
+	</body>
+	<script type="text/javascript">
+		var worker = new Worker("my.js");
+		var bundle = {message:"Hello world", id:1};
+		worker.postMessage(bundle); //postMessage可以传一个可序列化的对象过去
+		worker.onmessage =  function(evt){
+			console.log(evt.data);
+			console.log(bundle);
+		}
+	</script>
+</html>

@@ -1,0 +1,33 @@
+<script>
+//single thread...
+var start = new Date();
+setTimeout(function(){
+	var end = new Date();
+	console.log('Time elapsed:', end - start, 'ms');
+}, 500);
+while(new Date() - start < 1000) {};
+//////
+</script>
+
+<script src="WorkerThread.js"></script>
+
+<script>
+var start = new Date();
+var signal = false;
+//while(!signal){
+	(new WorkerThread({start: start})).run(function(shared){
+		var self = this;
+		setTimeout(function(){
+			shared.end = new Date();
+			self.runOnUiThread(function(shared){
+				console.log('Time elapsed:', shared.end - shared.start, 'ms');
+			});
+		}, 500);
+	}, function(){
+		signal = true;
+	});
+//}
+
+while(new Date() - start < 1000) {};
+console.log('main done');
+</script>

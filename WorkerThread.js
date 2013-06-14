@@ -13,7 +13,7 @@ function WorkerThread(sharedObj){
 			fn(ret.sharedObj);
 		}else{
 			self.sharedObj = ret.sharedObj;
-			self._completes[ret.taskId](ret);
+			self._completes[ret.taskId] && self._completes[ret.taskId](ret);
 		}
 	}
 }

@@ -38,7 +38,7 @@
 			}
 			return sharedObj.i;
 		}, function(r){
-			console.log("t2>" + r.returnValue + ":" + r.error);
+			window.console && console.log("t2>" + r.returnValue + ":" + r.error);
 		});
 	</script>
 </html>

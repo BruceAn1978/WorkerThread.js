@@ -1,6 +1,6 @@
 # WorkerThread.js
 
-WorkerThread.js is a lightweight multi-thread lib that allow jsers to write code run between workers and main thread.
+WorkerThread.js is a lightweight multi-thread lib that allow jsers to write code run between workers and DOM.
 
 # Docs & Examples
 
@@ -24,7 +24,7 @@ Quick Start
 1. Write your code as:
 
 	```js
-	///there is two ways to do task on work thread
+	///there are two ways to do task on work thread
 	var t1 = new WorkerThread({i: 100} /*shared obj*/);
 
 	///1. use setInterval

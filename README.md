@@ -3,10 +3,8 @@
 WorkerThread.js is a lightweight multi-thread lib that allow jsers to write code run between workers and main thread.
 
 # Docs & Examples
-	
-	```js
-	<script src="WorkerThread.js"></script>
-	<script type="text/javascript">
+		
+		```js
 		///there is two ways to do task on work thread
 		var t1 = new WorkerThread({i: 100} /*shared obj*/);
 
@@ -39,5 +37,5 @@ WorkerThread.js is a lightweight multi-thread lib that allow jsers to write code
 		}, function(r){
 			window.console && console.log("t2>" + r.returnValue + ":" + r.error);
 		});
-	</script>
-	```
+	
+		```

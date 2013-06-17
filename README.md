@@ -3,13 +3,21 @@
 WorkerThread.js is a lightweight multi-thread lib that allow jsers to write code run between workers and main thread.
 
 # Docs & Examples
+
+Quick Start
+===========
+
+### Example
+
+1. Start Http Server
 	
-	```js
-	packages: [
-		{ name: 'when', location: 'path/to/when/', main: 'when' },
-		// ... other packages ...
-	]
-	```
+	node httpd
+
+1. Add WorkerThread.js to your HTML File
+
+	<script src="WorkerThread.js"></script>
+
+1. Write your code as:
 
 	```js
 	///there is two ways to do task on work thread

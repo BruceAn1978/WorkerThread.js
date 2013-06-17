@@ -10,12 +10,16 @@ Quick Start
 ### Example
 
 1. Start Http Server
-	
+
+	```
 	node httpd
+	```
 
 1. Add WorkerThread.js to your HTML File
-
+	
+	```
 	<script src="WorkerThread.js"></script>
+	```
 
 1. Write your code as:
 

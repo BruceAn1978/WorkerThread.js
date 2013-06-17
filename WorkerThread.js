@@ -14,29 +14,29 @@ if(!window.Worker){
 
  	window.Worker = function(src){
 		var iframe = document.createElement("iframe");
-            iframe.style.cssText = "visibility:hidden;";
-            document.body.appendChild(iframe);
-            var text = ['<html><head>' ,
-                '<meta http-equiv="X-UA-Compatible" content="IE=edge">' ,
-                '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">',
-                '</head></html>'].join();
-            var doc = iframe.contentWindow.document, head, script;
-            doc.open();
-            doc.write(text);
-            doc.close();	
+			iframe.style.cssText = "visibility:hidden;";
+			document.body.appendChild(iframe);
+			var text = ['<html><head>' ,
+				'<meta http-equiv="X-UA-Compatible" content="IE=edge">' ,
+				'<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">',
+				'</head></html>'].join();
+			var doc = iframe.contentWindow.document, head, script;
+			doc.open();
+			doc.write(text);
+			doc.close();	
 
-            var jsFile = getThreadPath(src);
-            head = doc.getElementsByTagName("head")[0];
-            script = doc.createElement("script");
-            script.type = "text/javascript";
-            script.src = jsFile;
-            head.appendChild(script);
+			var jsFile = getThreadPath(src);
+			head = doc.getElementsByTagName("head")[0];
+			script = doc.createElement("script");
+			script.type = "text/javascript";
+			script.src = jsFile;
+			head.appendChild(script);
 
-        this._win = iframe.contentWindow;
-        var self = this;
-        this._win.postMessage = function(msg){
-        	self.onmessage({data:msg});
-        }
+		this._win = iframe.contentWindow;
+		var self = this;
+		this._win.postMessage = function(msg){
+			self.onmessage({data:msg});
+		}
 	}
 
 	Worker.prototype.postMessage = function(msg){
